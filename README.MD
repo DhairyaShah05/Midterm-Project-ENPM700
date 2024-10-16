@@ -13,7 +13,7 @@ Harsh Senjaliya
 
 ## UML and Activity Diagrams for the Steering Controller Module 
 
-![UML Diagram](Design/Class Diagram.png)
+![UML Diagram](Design/Class_Diagram.png)
 
-![Activity Diagram](Design/Activity Diagram.png)
+![Activity Diagram](Design/Activity_Diagram.png)
 
