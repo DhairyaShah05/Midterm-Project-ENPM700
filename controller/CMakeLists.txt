@@ -3,6 +3,9 @@
 add_library (controller
   # list of cpp source files:
   controller.cpp
+  PIDController.cpp
+  Vehicle.cpp
+  AckermannController.cpp
   )
 
 # Indicate what directories should be added to the include file search
