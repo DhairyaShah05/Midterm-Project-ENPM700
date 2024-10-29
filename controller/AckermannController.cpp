@@ -1,15 +1,19 @@
 #include "AckermannController.hpp"
+#include <cmath>  // Include cmath for std::abs
 
-AckermannController::AckermannController(double Kp_h, double Ki_h, double Kd_h, double maxSteeringAngle)
-    : headingController(Kp_h, Ki_h, Kd_h), maxSteeringAngle(maxSteeringAngle) {}
+AckermannController::AckermannController(double Kp, double Ki, double Kd, double maxSteeringAngle)
+    : headingController_(Kp, Ki, Kd), maxSteeringAngle_(maxSteeringAngle) {}
 
 double AckermannController::computeSteering(double targetHeading, double currentHeading) {
-    // Stub
-    return 0.0;
+  double steeringAngle = headingController_.compute(targetHeading, currentHeading);
+  if (steeringAngle > maxSteeringAngle_) {
+    return maxSteeringAngle_;
+  } else if (steeringAngle < -maxSteeringAngle_) {
+    return -maxSteeringAngle_;
+  }
+  return steeringAngle;
 }
 
 bool AckermannController::isSteeringAngleWithinErrorMargin(double actualAngle, double targetAngle, double margin) {
-    // Stub
-    return true;
+  return std::abs(actualAngle - targetAngle) <= margin;
 }
-

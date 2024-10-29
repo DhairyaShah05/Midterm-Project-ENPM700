@@ -1,13 +1,17 @@
 #include "PIDController.hpp"
 
 PIDController::PIDController(double Kp, double Ki, double Kd)
-    : Kp(Kp), Ki(Ki), Kd(Kd), error(0), integral(0), derivative(0), prev_error(0) {}
+    : Kp_(Kp), Ki_(Ki), Kd_(Kd), integral_(0.0), prev_error_(0.0) {}
 
 double PIDController::compute(double target, double actual) {
-    // Stub for error computation
-    return 0.0;  // Stub: No actual implementation yet
+  error_ = target - actual;
+  integral_ += error_;
+  derivative_ = error_ - prev_error_;
+  prev_error_ = error_;
+  return Kp_ * error_ + Ki_ * integral_ + Kd_ * derivative_;
 }
 
 void PIDController::reset() {
-    // Stub for reset
+  integral_ = 0.0;
+  prev_error_ = 0.0;
 }

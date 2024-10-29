@@ -24,3 +24,4 @@ target_link_libraries(cpp-test PUBLIC
 # binary, using the GoogleTest CMake module.
 include(GoogleTest)
 gtest_discover_tests(cpp-test)
+enable_testing()
